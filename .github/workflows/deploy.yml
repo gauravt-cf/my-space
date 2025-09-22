@@ -13,6 +13,10 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages       # 👈 required
+      url: ${{ steps.deployment.outputs.page_url }}  # 👈 optional, but nice
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
