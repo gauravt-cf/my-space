@@ -20,7 +20,8 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Copy upcoming.html to index.html
+      # Copy upcoming.html as index.html (homepage)
+      - name: Set homepage
         run: cp upcoming.html index.html
 
       - name: Upload artifact
