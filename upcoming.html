@@ -2,11 +2,341 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>Gauravthakur.space - Coming Soon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ffce00;
+            --dark: #232526;
+            --darker: #1a1c1d;
+            --light: #f5f5f5;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--light);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 3rem 2.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,206,0,0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            animation: pulse 8s infinite alternate;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .rocket {
+            font-size: 2.5rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            margin-right: 15px;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin: 1.5rem 0;
+            text-shadow: 0 0 10px rgba(255, 206, 0, 0.5);
+        }
+        
+        .content {
+            margin: 2rem 0;
+        }
+        
+        .features {
+            text-align: left;
+            display: inline-block;
+            margin: 1.5rem auto;
+            font-size: 1.2rem;
+            list-style: none;
+        }
+        
+        .features li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .features li:hover {
+            transform: translateX(10px);
+            color: var(--primary);
+        }
+        
+        .features li::before {
+            content: '▸';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .progress-container {
+            margin: 2rem 0;
+            text-align: left;
+            display: inline-block;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--primary);
+            width: 65%;
+            border-radius: 4px;
+            animation: progress 2s ease-in-out;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.8rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-5px);
+            background: rgba(255, 206, 0, 0.1);
+        }
+        
+        .footer {
+            margin-top: 2.5rem;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .heart {
+            color: #e74c3c;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 65%; }
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .highlight {
+                font-size: 1.3rem;
+            }
+            
+            .features {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .rocket {
+                font-size: 2rem;
+            }
+            
+            .highlight {
+                font-size: 1.1rem;
+            }
+            
+            .features {
+                font-size: 1rem;
+            }
+            
+            .social-links a {
+                font-size: 1.5rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Coming Soon!</h1>
-    <p>We're working hard to bring you something amazing. Stay tuned!</p>
+    <div class="container">
+        <h1><span class="rocket">🚀</span> Gauravthakur.space</h1>
+        <p class="highlight">Something awesome is coming soon!</p>
+        
+        <div class="content">
+            <p>Gauravthakur.space is under construction.</p>
+            <p>Stay tuned for an exciting launch with:</p>
+            
+            <ul class="features">
+                <li>Personal portfolio & blog</li>
+                <li>Project showcases</li>
+                <li>Contact and social links</li>
+                <li>And much more!</li>
+            </ul>
+            
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Development Progress</span>
+                    <span>30%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        
+        <div class="footer">
+            <span>&mdash; Made with</span>
+            <span class="heart">❤️</span>
+            <span>by Gaurav Thakur</span>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate list items on scroll
+            const features = document.querySelectorAll('.features li');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            features.forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateX(-20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+            
+            // Add click effect to social links
+            const socialLinks = document.querySelectorAll('.social-links a');
+            socialLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
